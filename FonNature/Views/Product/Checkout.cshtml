@@ -1,0 +1,209 @@
+﻿@using Models.Entity;
+@model Models.Model.OrderProduct
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script>
+        $('#orderButtonAjax').off('click').on('click', function (e) {
+            var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+            var couponCode = localStorage.getItem("couponCode");
+            console.log(couponCode)
+            if (cartItemsList == null) {
+                window.alert('Cart is empty!')
+                return;
+            }
+            $.ajax({
+                url: "/Product/AddCart",
+                data: { data: JSON.stringify(cartItemsList), coupon: couponCode},
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (res) {
+                        $('#orderButtonPostBack').click();
+                        console.log(res);
+                    }
+                    else {
+                        console.log(res.product);
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            $(window).scrollTop(300);
+                            event.preventDefault();
+                            event.stopPropagation();
+                            //$('#theFormId').submit();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script>
+        $('[name="payment-method"]').on('click', function () {
+
+            var $value = $(this).attr('value');
+
+            $('.single-method p').slideUp();
+            $('[data-method="' + $value + '"]').slideDown();
+
+        })
+    </script>
+}
+@{ 
+    var account = ViewBag.Account as ClientAccount;
+    if (account == null)
+    {
+        return;
+    }
+}
+<!-- Page Banner Section Start -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
+    <div class="container">
+        <h1 class="main-title">
+            Check Out
+        </h1>
+    </div>
+</div>
+<!-- Page Banner Section End -->
+<!--Checkout section start-->
+<div style="margin-top:40px;" class="checkout-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Checkout Form Start-->
+                @using (Html.BeginForm("Checkout", "Product", FormMethod.Post, new { @class = "checkout-form needs-validation", @novalidate = "novalidate" }))
+                {
+                    <div class="row row-40">
+                        <div class="col-lg-7">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <!-- Billing Address -->
+                            <div id="billing-form" class="mb-10">
+                                <h4 class="checkout-title">Shipping Address</h4>
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>First Name*</label>
+                                        <input id="validationCustom01" name="FirstName" class="form-control" type="text" placeholder="First Name" required>
+                                        <div class="invalid-feedback">
+                                            Please input fistname!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>Last Name*</label>
+                                        <input id="validationCustom02" name="LastName" class="form-control" type="text" placeholder="Last Name" required>
+                                        <div class="invalid-feedback">
+                                            Please input lastname!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Mobile Phone*</label>
+                                        <input id="validationCustom03" name="MobilePhone" class="form-control" type="tel" placeholder="Mobile Phone" pattern="(0[3|5|7|8|9])+([0-9]{8})" value="@account.MobilePhone" required>
+                                        <div class="invalid-feedback">
+                                            Please input valid mobile phone!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Address*</label>
+                                        <input id="validationCustom04" name="Address" class="form-control" type="text" placeholder="Address" required>
+                                        <div class="invalid-feedback">
+                                            Please input valid address!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="row">
+
+                                <!-- Cart Total -->
+                                <div class="col-12 mb-60">
+
+                                    <h4 class="checkout-title">Cart Total</h4>
+
+                                    <div class="checkout-cart-total">
+
+                                        <h4>Product <span>Total</span></h4>
+
+                                        <ul style="padding-left: 0px !important;" id="checkoutCartItem"></ul>
+
+                                        <p>Sub Total <span id="subTotalInCheckout">0 vnđ</span></p>
+                                        <p>Discount <span id="discount-value">0 vnđ</span></p>
+                                        <p>Shipping fee <span>0 vnđ</span></p>
+                                        <h4>Grand Total <span id="grandTotalInCheckout">0 vnđ</span></h4>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div style="margin-top:40px;" class="col-12 mb-30">
+
+                                    <h4 class="checkout-title">Payment Method</h4>
+
+                                    <div class="checkout-payment-method">
+                                        <div class="single-method">
+                                            <input type="radio" id="payment_@Constant.Order.BankTransferPaymentMethods" name="paymentMethod" value="@Constant.Order.BankTransferPaymentMethods">
+                                            <label for="payment_@Constant.Order.BankTransferPaymentMethods">Direct Bank Transfer</label>
+                                            <p data-method="@Constant.Order.BankTransferPaymentMethods">Bank Transfer Information: <br />Bank Id: 0231000582588 <br /> Bank Name: Techcombank <br />Account Name: Phạm Thùy Vân</p>
+                                        </div>
+                                        <div class="single-method">
+                                            <input type="radio" id="payment_@Constant.Order.CODPaymentMethods" name="paymentMethod" value="@Constant.Order.CODPaymentMethods" checked>
+                                            <label for="payment_@Constant.Order.CODPaymentMethods">Cash on Delivery</label>
+                                            <p data-method="@Constant.Order.CODPaymentMethods">Paymen when receive</p>
+                                        </div>
+                                        <div class="single-method">
+                                            <input type="radio" id="payment_@Constant.Order.MoMoPaymentMethods" name="paymentMethod" value="@Constant.Order.MoMoPaymentMethods">
+                                            <label for="payment_@Constant.Order.MoMoPaymentMethods">Momo</label>
+                                            <p data-method="@Constant.Order.MoMoPaymentMethods">Payment through MoMo</p>
+                                        </div>
+                                        <div style="color:#FFFFFF !important" class="form-group">
+                                            <div class="form-check pl-0">
+                                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck266" required>
+                                                <label class="form-check-label" for="invalidCheck266">Agree to terms and conditions</label>
+                                                <div class="invalid-feedback">You must agree terms and conditions!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a id="orderButtonAjax" href="javascript:void(0)" class="place-order btn btn-lg btn-round">Đặt hàng</a>
+                                    <button hidden id="orderButtonPostBack" class="place-order btn btn-lg btn-round">Đặt hàng</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout section end-->

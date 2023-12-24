@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<Models.Entity.About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+@section jsFooter{
+<script src="~/Asset/Admin/Controller/AboutController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List About
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>About Type</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                var stt = 1;
+                                foreach (var item in Model)
+                                {
+                                    if (item.Category == 1)
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td><a href="/Admin/AboutAdmin/Edit/@item.Id">@stt</a></td>
+                                            <td>@item.Name</td>
+                                            <td>Our Company</td>
+                                            <td>
+                                                <a href="/Admin/AboutAdmin/Edit/@item.Id">Sửa</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td><a href="/Admin/AboutAdmin/Edit/@item.Id">@stt</a></td>
+                                            <td>@item.Name</td>
+                                            <td>Testimonial</td>
+                                            <td>
+                                                <a href="/Admin/AboutAdmin/Edit/@item.Id">Sửa</a>
+                                                /
+                                                @Ajax.ActionLink("Xóa", "Delete", new {@id = item.Id} ,new AjaxOptions
+                                                {
+                                                    Confirm = "Bạn có muốn xoá bản ghi này?",
+                                                    OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                                    HttpMethod = "Delete"
+                                                })
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    stt += 1;
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "AboutAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

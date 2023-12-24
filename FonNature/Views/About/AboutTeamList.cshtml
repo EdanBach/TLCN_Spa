@@ -1,0 +1,54 @@
+﻿@model List<Models.Entity.Staff>
+
+<div class="sec--our-team--about-page">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our team
+            </h3>
+
+            <div class="line-element">
+                <img src="/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-team layout-1">
+            <div class="row justify-content-center">
+                @foreach (var staff in Model)
+                {
+                    <div class="col-md-9 col-lg-4">
+                        <div class="item-team">
+                            <a href="#"><img class="pic-item" src="@staff.image" alt="IMG"></a>
+
+                            <div class="content-item">
+                                <h4 class="name-item">
+                                    <a href="#">
+                                        @staff.Name
+                                    </a>
+                                </h4>
+
+                                <div class="info-item">
+                                    / @staff.Position
+                                </div>
+
+                                <div class="social-link">
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-facebook"></i>
+                                    </a>
+
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-twitter"></i>
+                                    </a>
+
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-dribbble"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

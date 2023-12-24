@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@(ViewBag.MetaTitle ?? ViewBag.Title)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="title" content="@(ViewBag.MetaTitle ?? string.Empty)" />
+    <meta name="description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta name="keywords" content="@(ViewBag.MetaKeyword ?? string.Empty)" />
+    <meta property="og:title" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="@Context.Request.Url.AbsoluteUri" />
+    <meta property="og:description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta property="og:site_name" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="icon" type="image/png" href="/Asset/Spa/images/icons/favicon-01.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/font-awesome-4/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/iconic-font/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/simple-line-icons/css/simple-line-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/linearicons/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/magnific-popup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/animsition/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/parallax100/parallax100.css">
+    <!--===============================================================================================-->
+    @RenderSection("cssHeader", required: false)
+    <link href="~/Asset/Client/css/plugins.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Asset/MdBootrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.css">
+    <link href="~/Asset/noty/lib/themes/metroui.css" rel="stylesheet" />
+    <link href="~/Asset/noty/lib/noty.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/css/style.css">
+    <!--===============================================================================================-->
+</head>
+<body id="body" onload="myFunction()" class="animsition">
+    <!-- Header -->
+    <header class="hun-header style-sticky layout-2">
+        <div class="wrapper-header element-for-stick">
+            <div class="logo-header">
+                <a href="/" class="main-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="mobile-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="sticky-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="retina-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+            </div>
+
+            @{Html.RenderAction("MainMenu", "Home");}
+
+            <div class="group-feature">
+                @{Html.RenderAction("BookNav", "Home");}
+                @{Html.RenderAction("TopAccountNav", "Home");}
+                @{Html.RenderAction("MiniCart", "Home");}
+                @*<div class="hun-element-search layout-1">
+                    <span class="search-open">
+                        <i class="zmdi zmdi-search"></i>
+                    </span>
+
+                    <div class="search-form">
+                        <span class="search-close"></span>
+
+                        <form>
+                            <input type="text" class="search-field" />
+                            <span class="search-notice"> Hit enter to search or ESC to close</span>
+                        </form>
+
+                        <ul class="list-result"></ul>
+                    </div>
+                </div>*@
+
+                <div class="hun-menu-mobile">
+                    <a href="#" class="btn-toggle-menu"></a>
+
+                    <nav class="mobile-navigation">
+                        <div class="logo-menu-mobile">
+                            <a href="/">
+                                <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- end Header -->
+    @RenderBody();
+    <!-- Footer -->
+    @{Html.RenderAction("Footer", "Home");}
+    <!-- end Footer -->
+    <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a id="loginTab" class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+                                <i class="fas fa-user mr-1"></i>
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="registerTab" class="nav-link" data-toggle="tab" href="#panel8" role="tab">
+                                <i class="fas fa-user-plus mr-1"></i>
+                                Register
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel 7-->
+                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input type="email" id="email-login" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="Email">Your email</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="password-login" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="Password">Your password</label>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <label style="color:red" id="message-login"></label>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <button id="btn-login" class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-center text-md-right mt-1">
+                                    @*<p>Forgot <a href="#" class="blue-text">Password?</a></p>*@
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Panel 7-->
+                        <!--Panel 8-->
+                        <div class="tab-pane fade" id="panel8" role="tabpanel">
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix"></i>
+                                    <input name="FirstName" type="text" id="first-name-register" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="first-name-register">Your First Name</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix"></i>
+                                    <input name="LastName" type="text" id="last-name-register" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="last-name-register">Your LastName</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-phone prefix"></i>
+                                    <input name="MobilePhone" type="text" id="mobilephone-register" class="form-control form-control-sm">
+                                    <label id="label-mobilephone-register" data-error="Invalid format or have already registered!" data-success="Valid!" for="mobilephone-register">Your mobile phone</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input name="Email" type="email" id="email-register" class="form-control form-control-sm">
+                                    <label data-error="Invalid format or have already registered!" data-success="Valid!" for="email-register">Your email</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input name="PassWord" type="password" id="password-register" class="form-control form-control-sm">
+                                    <label data-error="Password must have minimum eight characters, at least one letter and one number!" data-success="Valid!" for="password-register">Your password</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input name="RepeatPassword" type="password" id="repeatpassword-register" class="form-control form-control-sm validate">
+                                    <label data-error="Not match with password!" data-success="Valid!" for="repeatpassword-register">Repeat password</label>
+                                </div>
+
+                                <div class="text-center form-sm mt-2">
+                                    <button id="btn-register-form" disabled class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-right">
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!--/.Panel 8-->
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="heading lead">Modal Success</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                        <p>
+                            Email have sent to you, please check and confirm your account!
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-success" data-dismiss="modal">Apply</i></a>
+                    <a type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No, thanks</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>*@
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/jquery.min.js"></script>
+    <script src="~/Asset/Client/js/HandlerCart.js"></script>
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/popper.min.js"></script>
+    <script src="~/Asset/Client/js/plugins.js"></script>
+    <script src="/Asset/Spa/libs/bootstrap/popper.js"></script>
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/bootstrap.min.js"></script>
+    <script src="/Asset/Spa/libs/slick/slick.js"></script>
+    <script src="/Asset/Spa/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/Asset/Spa/libs/select2/select2.min.js"></script>
+    <script src="/Asset/Spa/libs/animsition/animsition.min.js"></script>
+    <script src="/Asset/Spa/libs/daterangepicker/moment.min.js"></script>
+    <script src="/Asset/Spa/libs/daterangepicker/daterangepicker.js"></script>
+    <script src="/Asset/Spa/libs/parallax100/parallax100.js"></script>
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/mdb.min.js"></script>
+    <script src="~/Asset/noty/lib/noty.js"></script>
+    <script src="~/Asset/Client/js/membership.js"></script>
+    @RenderSection("jsFooter", required: false)
+    <script src="~/Asset/Spa/js/main.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=2399606136744047&autoLogAppEvents=1"></script>
+    <script>
+    </script>
+    <div class="fb-customerchat"
+         page_id="1897363613844865"
+         minimized="true">
+    </div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '2399606136744047',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.11'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+</html>

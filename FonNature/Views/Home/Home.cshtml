@@ -1,0 +1,415 @@
+﻿@using FonNature.Services;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listMenu = ViewBag.ListMenu;
+    List<Models.Entity.Slide> listSlide = ViewBag.SlideList;
+    List<Models.Entity.Product> featuredProductList = ViewBag.featuredProduct;
+    List<Models.Entity.Product> topHotProduct = ViewBag.topHotProduct;
+    List<Models.Entity.Product> bestSellerProductList = ViewBag.bestSellerProduct;
+    Models.Entity.Slide otherSlide = ViewBag.otherSlide;
+    List<Models.Entity.Content> contentList = ViewBag.contentList;
+    Models.Entity.Banner bannerHome = ViewBag.bannerHome;
+    var aboutUs = ViewBag.aboutUs as Models.Entity.About;
+    var benefits = ViewBag.benefits as List<Models.Entity.Benefit>;
+}
+<!-- slider home-1 -->
+<div class="sec--main-slider--home-1">
+    <div class="hun-element-main-slider layout-1">
+        <div class="main-slider js-call-slick" data-animate="true">
+            <div class="slide-slick" data-slick='{"fade": true, "speed": 900, "dots": true, "arrows": false, "autoplay": true, "autoplaySpeed": 4500, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
+                @foreach (var slide in listSlide)
+                {
+                    <div class="item-slick full-height-with-header" style="background-image: url('@slide.image');">
+                        <div class="content-slide">
+                            <div class="subtitle-slide" data-appear="slideInDown" data-delay="800">
+                                @slide.subtitle
+                            </div>
+
+                            <h2 class="title-slide" data-appear="slideInUp" data-delay="0">
+                                @slide.title
+                            </h2>
+
+                            <div class="buttons-slide" data-appear="zoomIn" data-delay="1600">
+                                <a href="@slide.link" class="hun-button size-normal style-border-light shape-round">
+                                    @slide.TextButton
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+
+            <div class="dots-slick"></div>
+        </div>
+
+        <div class="social-slider">
+        </div>
+    </div>
+</div>
+<!-- end slider home-1 -->
+<!-- our-story home-2 -->
+<div class="sec--our-story--home-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 pb-5 pb-md-0 pr-md-4 pr-lg-5">
+                <div class="hun-element-image layout-1">
+                    <img src="@aboutUs.Image" alt="IMG">
+                </div>
+            </div>
+
+            <div class="col-md-6 pt-4 pt-md-0 align-self-center pl-md-4 pl-lg-5">
+                <div class="hun-element-our-story layout-2">
+                    <div class="heading-element">
+                        <h3 class="title-element">
+                            @aboutUs.Name
+                        </h3>
+
+                        <img class="line-heading" src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+                    </div>
+
+                    <div class="content-element">
+                        @Html.Raw(aboutUs.Description)
+                    </div>
+
+                    <div class="info-element">
+                        <div class="sign-element">
+                            <img src="@aboutUs.Sign" alt="IMG">
+                        </div>
+
+                        <div class="author-element">
+                            <span class="name-author">@aboutUs.Author</span> / @aboutUs.Role
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end our-story home-2 -->
+@if (benefits != null && benefits.Any())
+{
+    <!-- feature home-2 -->
+    <div class="sec--feature--home-2">
+        <div class="container">
+            <div class="row justify-content-md-end">
+                <div class="col-md-6 pb-5 pb-md-0 pl-md-4 pl-lg-5 order-md-2">
+                    <div class="hun-element-image">
+                        <img src="@bannerHome.Image" alt="IMG">
+                    </div>
+                </div>
+
+                <div class="col-sm-11 col-md-6 col-lg-5 pr-md-4 pr-lg-5 order-md-1 align-self-center">
+                    @foreach (var benefit in benefits)
+                    {
+                        <div class="hun-element-feature layout-1 align-right mb-5">
+                            <a href="#" class="icon-element">
+                                <img src="@benefit.Image" alt="IMG">
+                            </a>
+
+                            <div class="text-element">
+                                <h4 class="title-element">
+                                    <a href="#">
+                                        @benefit.Name
+                                    </a>
+                                </h4>
+
+                                <div class="description-element">
+                                    @Html.Raw(benefit.Description)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="buttons-section text-md-right">
+                        <a href="/service" class="hun-button size-normal style-fill-color shape-round">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end feature home-2 -->
+}
+<!-- book-service home-1 -->
+<!-- end book-service home-1 -->
+<!-- our-services home-1 -->
+<div class="sec--our-service--home-1">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our Products
+            </h3>
+
+            <div class="line-element">
+                <img src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-service layout-1">
+            <div class="slide-element js-call-slick">
+                <div class="slide-slick" data-slick='{"dots": false, "arrows": true, "autoplay": false, "infinite": true, "slidesToShow": 3, "slidesToScroll": 1, "responsive": [{"breakpoint": 1199, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 991, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 767, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 575, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}]}'>
+                    @foreach (var item in bestSellerProductList)
+                    {
+                        <div class="item-slick">
+                            <div class="item-element">
+                                <div class="pic-item">
+                                    <a href="/product/detail?id=@item.id" class="wrap-pic">
+                                        <img style="width:245px;height:245px" src="@item.image" alt="IMG">
+                                    </a>
+                                </div>
+
+                                <div class="text-item">
+                                    <h4 class="title-item">
+                                        <a href="/product/detail?id=@item.id">
+                                            @item.name
+                                        </a>
+                                    </h4>
+
+                                    <div class="meta-info-item">
+                                        <span class="item-info">
+                                            <i class="zmdi zmdi-money-box"></i>
+                                            @item.price.Value.ToString("N0") vnđ
+                                        </span>
+                                    </div>
+
+                                    <div class="description-item">
+                                        @item.description
+                                    </div>
+                                </div>
+
+                                <div class="foot-item">
+                                    <a data-id="@item.id" style="margin:auto" href="#" class="link-item addToCart">
+                                        Add to Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="arrows-slick">
+                    <a class="item-arrow prev-slick"></a>
+
+                    <a class="item-arrow next-slick"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-section">
+            <a href="/product" class="hun-button size-normal style-border-color shape-round">
+                View All
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end our-services home-1 -->
+<!-- gallery home-2 -->
+<div class="sec--gallery--home-2">
+    <div class="hun-element-gallery layout-1">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="item-gallery size-2x" style="background-image: url('/Asset/Spa/images/gallery-01.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-02.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-03.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-04.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-05.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="item-gallery size-2x" style="background-image: url('/Asset/Spa/images/gallery-06.jpg');">
+                    <a href="/service" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end gallery home-2 -->
+<!-- our-team home-2 -->
+<div class="sec--our-team--home-2">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our team
+            </h3>
+
+            <div class="line-element">
+                <img src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-team layout-1">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-01.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Lori Alvarez
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-02.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Lisa Young
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-03.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Julia Berry
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end our-team home-2 -->

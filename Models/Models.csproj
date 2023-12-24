@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EBF779B1-BCA6-4F3B-A34A-1F48563558C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\About.cs" />
+    <Compile Include="Entity\AccountAdmin.cs" />
+    <Compile Include="Entity\Banner.cs" />
+    <Compile Include="Entity\Benefit.cs" />
+    <Compile Include="Entity\Booking.cs" />
+    <Compile Include="Entity\ClientAccount.cs" />
+    <Compile Include="Entity\Contact.cs" />
+    <Compile Include="Entity\Content.cs" />
+    <Compile Include="Entity\ContentCategory.cs" />
+    <Compile Include="Entity\Dictionary.cs" />
+    <Compile Include="Entity\CouponCode.cs" />
+    <Compile Include="Entity\District.cs" />
+    <Compile Include="Entity\FonNatureDbContext.cs" />
+    <Compile Include="Entity\Footer.cs" />
+    <Compile Include="Entity\FooterCategory.cs" />
+    <Compile Include="Entity\GenderCustomer.cs" />
+    <Compile Include="Entity\IPAddress.cs" />
+    <Compile Include="Entity\MaritalStatusCustomer.cs" />
+    <Compile Include="Entity\Membership.cs" />
+    <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\MenuType.cs" />
+    <Compile Include="Entity\OccupationCustomer.cs" />
+    <Compile Include="Entity\Order.cs" />
+    <Compile Include="Entity\OrderInformation.cs" />
+    <Compile Include="Entity\OrderStatus.cs" />
+    <Compile Include="Entity\Page.cs" />
+    <Compile Include="Entity\Region.cs" />
+    <Compile Include="Entity\Room.cs" />
+    <Compile Include="Entity\Service.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\ServiceCategory.cs" />
+    <Compile Include="Entity\ProductCategory.cs" />
+    <Compile Include="Entity\SEO.cs" />
+    <Compile Include="Entity\Slide.cs" />
+    <Compile Include="Entity\Staff.cs" />
+    <Compile Include="Entity\TitleCustomer.cs" />
+    <Compile Include="Entity\UsefulInformation.cs" />
+    <Compile Include="Entity\VisitorByTime.cs" />
+    <Compile Include="Migrations\202008220403371_Add-Dictionary.cs" />
+    <Compile Include="Migrations\202008220403371_Add-Dictionary.Designer.cs">
+      <DependentUpon>202008220403371_Add-Dictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008271507506_CreatePageTable.cs" />
+    <Compile Include="Migrations\202008271507506_CreatePageTable.Designer.cs">
+      <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010141412488_CreateServiceTable.cs" />
+    <Compile Include="Migrations\202010141412488_CreateServiceTable.Designer.cs">
+      <DependentUpon>202010141412488_CreateServiceTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261542343_AddCliendAcctountAndMembership.cs" />
+    <Compile Include="Migrations\202010261542343_AddCliendAcctountAndMembership.Designer.cs">
+      <DependentUpon>202010261542343_AddCliendAcctountAndMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010310825264_RenameClientAccount.cs" />
+    <Compile Include="Migrations\202010310825264_RenameClientAccount.Designer.cs">
+      <DependentUpon>202010310825264_RenameClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311218289_CreateClientAccount.cs" />
+    <Compile Include="Migrations\202010311218289_CreateClientAccount.Designer.cs">
+      <DependentUpon>202010311218289_CreateClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311220045_add-clietAccount.cs" />
+    <Compile Include="Migrations\202010311220045_add-clietAccount.Designer.cs">
+      <DependentUpon>202010311220045_add-clietAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011021531569_AddBooking.cs" />
+    <Compile Include="Migrations\202011021531569_AddBooking.Designer.cs">
+      <DependentUpon>202011021531569_AddBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012120949507_CreateCouponCode.cs" />
+    <Compile Include="Migrations\202012120949507_CreateCouponCode.Designer.cs">
+      <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012270055107_CreateRoomTable.cs" />
+    <Compile Include="Migrations\202012270055107_CreateRoomTable.Designer.cs">
+      <DependentUpon>202012270055107_CreateRoomTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Enum\OrderStatus.cs" />
+    <Compile Include="Model\EnvConfig.cs" />
+    <Compile Include="Model\MemberProfileViewModel.cs" />
+    <Compile Include="Model\MomoPaymentRequest.cs" />
+    <Compile Include="Model\MomoPaymentResponse.cs" />
+    <Compile Include="Model\ResultModel.cs" />
+    <Compile Include="Model\ShippingAddress.cs" />
+    <Compile Include="Model\PeriodTime.cs" />
+    <Compile Include="Repository\BenefitRepository.cs" />
+    <Compile Include="Repository\BookingRepository.cs" />
+    <Compile Include="Repository\ClientAccountRepository.cs" />
+    <Compile Include="Repository\CouponCodeRepository.cs" />
+    <Compile Include="Repository\DictionaryRepository.cs" />
+    <Compile Include="Repository\IAboutAdminRepository.cs" />
+    <Compile Include="Repository\IAccountAdminRepository.cs" />
+    <Compile Include="Repository\IBannerRepository.cs" />
+    <Compile Include="Repository\IBenefitRepository.cs" />
+    <Compile Include="Repository\IBookingRepository.cs" />
+    <Compile Include="Repository\IClientAccountRepository.cs" />
+    <Compile Include="Repository\IContactAdminRepository.cs" />
+    <Compile Include="Repository\IContentAdminRepository.cs" />
+    <Compile Include="Repository\IContentCategoryAdminRepository.cs" />
+    <Compile Include="Repository\ICouponCodeRepository.cs" />
+    <Compile Include="Repository\IDictionaryRepository.cs" />
+    <Compile Include="Repository\IFooterAdminRepository.cs" />
+    <Compile Include="Repository\IFooterCategoryAdminRepository.cs" />
+    <Compile Include="Repository\IMenuAdminRepository.cs" />
+    <Compile Include="Repository\IMenuTypeAdminRepository.cs" />
+    <Compile Include="Repository\IIPAddressRepository.cs" />
+    <Compile Include="Repository\IOrderRepository.cs" />
+    <Compile Include="Repository\IPageRepository.cs" />
+    <Compile Include="Repository\IProductAdminRepository.cs" />
+    <Compile Include="Repository\IProductCategoryAdminRepository.cs" />
+    <Compile Include="Repository\ISEORepository.cs" />
+    <Compile Include="Repository\IServiceCategoryRepository.cs" />
+    <Compile Include="Repository\IServiceRepository.cs" />
+    <Compile Include="Repository\ISlideAdminRepository.cs" />
+    <Compile Include="Repository\IStaffAdminRepository.cs" />
+    <Compile Include="Migrations\201912240333276_Initial.cs" />
+    <Compile Include="Migrations\201912240333276_Initial.Designer.cs">
+      <DependentUpon>201912240333276_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001210943023_[-CreateOrder].cs" />
+    <Compile Include="Migrations\202001210943023_[-CreateOrder].Designer.cs">
+      <DependentUpon>202001210943023_[-CreateOrder].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001211000380_[-CreateStatus].cs" />
+    <Compile Include="Migrations\202001211000380_[-CreateStatus].Designer.cs">
+      <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002190508253_[-AddSEOTable].cs" />
+    <Compile Include="Migrations\202002190508253_[-AddSEOTable].Designer.cs">
+      <DependentUpon>202002190508253_[-AddSEOTable].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004281002462_[-AddBanner].cs" />
+    <Compile Include="Migrations\202004281002462_[-AddBanner].Designer.cs">
+      <DependentUpon>202004281002462_[-AddBanner].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\Enum\SearchItemType.cs" />
+    <Compile Include="Model\OrderProduct.cs" />
+    <Compile Include="Model\ProductInCart.cs" />
+    <Compile Include="Model\SearchItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AboutAdminRepository.cs" />
+    <Compile Include="Repository\AccountAdminRepository.cs" />
+    <Compile Include="Repository\BannerRepository.cs" />
+    <Compile Include="Repository\ContactAdminRepository.cs" />
+    <Compile Include="Repository\ContentAdminRepository.cs" />
+    <Compile Include="Repository\ContentCategoryAdminRepository.cs" />
+    <Compile Include="Repository\FooterAdminRepository.cs" />
+    <Compile Include="Repository\FooterCategoryAdminRepository.cs" />
+    <Compile Include="Repository\IPAddressRepository.cs" />
+    <Compile Include="Repository\MenuAdminRepository.cs" />
+    <Compile Include="Repository\MenuTypeAdminRepository.cs" />
+    <Compile Include="Repository\OrdersRepository.cs" />
+    <Compile Include="Repository\PageRepository.cs" />
+    <Compile Include="Repository\ProductAdminRepository.cs" />
+    <Compile Include="Repository\ProductCategoryAdminRepository.cs" />
+    <Compile Include="Repository\SEORepository.cs" />
+    <Compile Include="Repository\ServiceCategoryRepository.cs" />
+    <Compile Include="Repository\ServiceRepository.cs" />
+    <Compile Include="Repository\SlideAdminRepository.cs" />
+    <Compile Include="Repository\StaffAdminRepository.cs" />
+    <Compile Include="Repository\VisitorRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912240333276_Initial.resx">
+      <DependentUpon>201912240333276_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001210943023_[-CreateOrder].resx">
+      <DependentUpon>202001210943023_[-CreateOrder].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211000380_[-CreateStatus].resx">
+      <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002190508253_[-AddSEOTable].resx">
+      <DependentUpon>202002190508253_[-AddSEOTable].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281002462_[-AddBanner].resx">
+      <DependentUpon>202004281002462_[-AddBanner].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008220403371_Add-Dictionary.resx">
+      <DependentUpon>202008220403371_Add-Dictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008271507506_CreatePageTable.resx">
+      <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010141412488_CreateServiceTable.resx">
+      <DependentUpon>202010141412488_CreateServiceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261542343_AddCliendAcctountAndMembership.resx">
+      <DependentUpon>202010261542343_AddCliendAcctountAndMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010310825264_RenameClientAccount.resx">
+      <DependentUpon>202010310825264_RenameClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311218289_CreateClientAccount.resx">
+      <DependentUpon>202010311218289_CreateClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311220045_add-clietAccount.resx">
+      <DependentUpon>202010311220045_add-clietAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011021531569_AddBooking.resx">
+      <DependentUpon>202011021531569_AddBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012120949507_CreateCouponCode.resx">
+      <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012270055107_CreateRoomTable.resx">
+      <DependentUpon>202012270055107_CreateRoomTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
+      <Project>{58D044CA-F2AA-4E89-9BEE-6B1353F3370F}</Project>
+      <Name>HelperLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\Models.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

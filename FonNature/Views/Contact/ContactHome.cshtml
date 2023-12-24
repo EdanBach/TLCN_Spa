@@ -1,0 +1,72 @@
+﻿@model  Models.Entity.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Models.Entity.Banner banner = ViewBag.banner;
+}
+
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
+    <div class="container">
+        <h1 class="main-title">
+            Contact
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                Contact
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- content contact-page -->
+<div class="sec--content--contact-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-5 mb-md-0">
+                <div class="hun-element-info-contact layout-1">
+                    <h3 class="title-element">
+                        Contact Details
+                    </h3>
+                    <div class="description-element">
+                        <p>ADDRESS: <br>@Model.Address </p>
+                        <p>PHONE: <br>@Model.MobilePhone </p>
+                        <p>E-MAIL: <br>@Model.Email</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { @class = "contact-form-01" }))
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input name="name" id="name" class="input-field" type="text" placeholder="Name *" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input name="email" id="email" class="input-field" type="email" placeholder="E-mail *" required>
+                        </div>
+
+                        <div class="col-12">
+                            <textarea name="comment" id="comment" class="input-field" placeholder="Your Comments *" required></textarea>
+
+                            <button class="hun-button size-normal shape-round style-fill-color">
+                                Send message
+                            </button>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end content contact-page -->
